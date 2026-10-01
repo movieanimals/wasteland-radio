@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101713"><title>Wasteland Radio</title><style>:root{color-scheme:dark;--bg:#101713;--panel:#1d2620;--ink:#eeeadd;--muted:#b5bcad;--green:#c3dc9f;--gold:#ddb46d;--line:#455044;font-family:Arial,Helvetica,sans-serif;font-size:16px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}main{max-width:960px;margin:0 auto;padding:45px 30px 28px}header{display:flex;align-items:center;justify-content:space-between;gap:20px}h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:normal;letter-spacing:-.035em;margin:0}.period{color:var(--gold)}.badge{font-size:.75rem;letter-spacing:.11em;color:var(--muted);text-align:right}.intro{color:var(--muted);margin:12px 0 27px;font-size:1rem}.receiver{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:25px}.screen{background:#0a100b;border:1px solid #536447;border-radius:5px;padding:17px 20px;color:var(--green)}.screen-top,.screen-bottom{display:flex;justify-content:space-between;gap:15px;font-size:.75rem;letter-spacing:.09em}.screen-bottom{letter-spacing:.01em}.screen-bottom span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}canvas{width:100%;height:83px;display:block;margin:8px 0}.connection{display:flex;gap:10px;margin-top:24px}button{font:inherit;font-size:.9rem;font-weight:600;border:1px solid #6a7264;background:transparent;color:var(--ink);border-radius:5px;padding:12px 18px;cursor:pointer;min-height:44px}button:hover{background:#354033}button:disabled{opacity:.45;cursor:default}button.primary{background:var(--gold);color:#201b10;border-color:var(--gold)}button.primary:hover{background:#efc983}button.primary:disabled{opacity:.6}button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:5px}#status{font-size:.9rem;color:var(--muted);line-height:1.5;margin:13px 0 24px}#status.error{color:#ffb7a0}.setup{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;border-top:1px solid var(--line);padding-top:20px}label{font-size:.9rem}.input-row{display:flex;gap:8px;margin-top:9px}.input-row input{min-width:0;width:100%;background:#101713;border:1px solid #697160;border-radius:5px;padding:12px;color:var(--ink);font:inherit;font-size:.9rem}.input-row button{white-space:nowrap;padding-inline:13px}.input-row input::placeholder{color:#a9b39e}.setup p{font-size:.875rem;line-height:1.65;color:var(--muted);margin:1px 0 0}.setup strong{color:var(--ink);font-weight:normal}.preset-row{display:flex;gap:9px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--line)}.preset-row button{font-size:.875rem;padding:9px 15px;min-height:40px}.preset-row button.selected{border-color:var(--green);background:#394b31;color:#e7f3d7}.controls{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:24px 0}h2{font-family:Georgia,serif;font-size:1.4rem;font-weight:normal;margin:0 0 24px}.slider-label{display:flex;justify-content:space-between;gap:12px;margin-top:21px}.slider-label:first-of-type{margin-top:0}output{color:var(--green);font-variant-numeric:tabular-nums;font-size:.875rem}input[type=range]{appearance:none;background:transparent;width:100%;height:28px;margin:8px 0 0;cursor:pointer;accent-color:var(--gold)}input[type=range]::-webkit-slider-runnable-track{height:4px;background:#68745f;border-radius:3px}input[type=range]::-webkit-slider-thumb{appearance:none;width:18px;height:23px;border-radius:3px;background:var(--gold);border:2px solid #f1cd8e;margin-top:-9px}input[type=range]::-moz-range-track{height:4px;background:#68745f}input[type=range]::-moz-range-thumb{width:15px;height:20px;border-radius:3px;background:var(--gold);border:2px solid #f1cd8e}.hint{font-size:.8rem;color:var(--muted);margin:2px 0 0}.volume{display:flex;align-items:center;gap:22px;border-top:1px solid var(--line);padding-top:19px}.volume label{white-space:nowrap}.volume input{max-width:400px;margin:0}.volume output{min-width:35px;text-align:right}footer{color:var(--muted);font-size:.8rem;line-height:1.6;padding:18px 2px}details{margin-top:12px}summary{cursor:pointer;width:fit-content;color:var(--ink);font-size:.875rem;text-underline-offset:4px}details p{max-width:70ch;font-size:.875rem}::selection{color:#101713;background:var(--green)}input{caret-color:var(--gold)}*{scrollbar-color:#68745f var(--bg)}@media(max-width:700px){main{padding:25px 16px}header{align-items:start}.badge{max-width:90px;line-height:1.6}.receiver{padding:17px}.setup{grid-template-columns:1fr;gap:14px}.controls{gap:30px}.screen{padding:13px}.screen-top,.screen-bottom{font-size:.75rem}.screen-bottom span:last-child{display:none}}@media(max-width:480px){.controls{grid-template-columns:1fr;gap:28px}.controls section+section{border-top:1px solid var(--line);padding-top:22px}.connection{flex-wrap:wrap}.connection .primary{flex:1 0 100%}.connection button:not(.primary){flex:1}.volume{gap:12px}.volume label{font-size:.8rem}.preset-row{gap:7px}.preset-row button{padding:8px 10px;font-size:.8rem}}
+</style></head>
+<body><main>
+<header><h1>Wasteland Radio<span class="period">.</span></h1><span class="badge">PERSONAL RECEIVER</span></header>
+<p class="intro">Your music. A little worse for wear.</p>
+<section class="receiver" aria-label="Radio controls">
+ <div class="screen"><div class="screen-top"><span id="signal">OFF AIR</span><span id="presetName">WASTELAND AM</span></div><canvas id="scope" aria-label="Live audio waveform"></canvas><div class="screen-bottom"><span id="sourceName">Waiting for a transmission</span><span>MONO / AM</span></div></div>
+ <div class="connection"><button id="connect" class="primary">Tune in to a tab</button><button id="stop" disabled>Power off</button><button id="mute" disabled aria-pressed="false">Mute</button></div>
+ <p id="status" role="status">Open this page in desktop Chrome. Play a YouTube video, then tune in.</p>
+ <div class="setup"><form id="youtubeForm"><label for="youtube">Open a YouTube video</label><div class="input-row"><input id="youtube" type="text" inputmode="url" placeholder="Paste a YouTube link" autocomplete="off"><button type="submit">Open video</button></div></form><p>In the sharing window, choose <strong>Chrome Tab</strong>, select the YouTube tab, and enable <strong>Share tab audio</strong>. Keep both tabs open.</p></div>
+ <div class="preset-row" aria-label="Radio presets"><button data-preset="wasteland" class="selected" aria-pressed="true">Wasteland AM</button><button data-preset="pocket" aria-pressed="false">Pocket radio</button><button data-preset="distant" aria-pressed="false">Distant station</button></div>
+ <div class="controls"><section><h2>The signal</h2>
+ <label class="slider-label" for="thin">Bass cut <output id="thinValue">650 Hz</output></label><input id="thin" type="range" min="200" max="1400" step="10" value="650"><p class="hint">Higher is thinner.</p>
+ <label class="slider-label" for="tone">Treble edge <output id="toneValue">3,600 Hz</output></label><input id="tone" type="range" min="1800" max="6500" step="50" value="3600">
+ <label class="slider-label" for="drive">Speaker grit <output id="driveValue">25%</output></label><input id="drive" type="range" min="0" max="100" value="25">
+ </section><section><h2>The atmosphere</h2>
+ <label class="slider-label" for="crackle">Vinyl crackle <output id="crackleValue">18%</output></label><input id="crackle" type="range" min="0" max="100" value="18"><p class="hint">Dust, ticks, and little pops.</p>
+ <label class="slider-label" for="static">Radio static <output id="staticValue">10%</output></label><input id="static" type="range" min="0" max="100" value="10">
+ <label class="slider-label" for="wind">Wasteland wind <output id="windValue">12%</output></label><input id="wind" type="range" min="0" max="100" value="12">
+ </section></div>
+ <div class="volume"><label for="volume">Master volume</label><input id="volume" type="range" min="0" max="100" value="55"><output id="volumeValue">55%</output></div>
+</section><footer><span>Processed live, on your device. Nothing recorded or uploaded.</span><details><summary>Need help?</summary><p>Use desktop Chrome or Edge. Safari, Firefox, and mobile browsers cannot provide the tab audio this player needs. You can use any YouTube video that plays in your browser, including playlists and live streams.</p><p>No sound? Make sure the video is playing, its player volume is up, and you enabled Share tab audio. Select the YouTube tab, not this radio page, a window, or your entire screen. Leave the video unmuted. Power off restores its normal audio.</p><p>If you hear both the clean and filtered audio, update Chrome and reconnect. Keep this page open while listening. YouTube ads and all other audio in the selected tab pass through the same effects.</p></details></footer>
+</main><script>(()=>{
+const presets = {
+ wasteland: {thin:650,tone:3600,drive:25,crackle:18,static:10,wind:12},
+ pocket: {thin:950,tone:4500,drive:38,crackle:10,static:7,wind:0},
+ distant: {thin:780,tone:2600,drive:40,crackle:30,static:24,wind:25}
+};
+function youtubeURL(value){
+ let url;try{url=new URL(value.trim());}catch{throw new Error('Paste a full YouTube video or playlist link.');}
+ if(!['http:','https:'].includes(url.protocol)||!['youtube.com','www.youtube.com','m.youtube.com','music.youtube.com','youtu.be'].includes(url.hostname))throw new Error('Use a youtube.com or youtu.be link.');
+ url.protocol='https:';return url.href;
+}
+function distortionCurve(amount){const k=amount*.22,curve=new Float32Array(4096);for(let i=0;i<curve.length;i++){const x=i*2/(curve.length-1)-1;curve[i]=k===0?x:Math.tanh(x*(1+k))/Math.tanh(1+k);}return curve;}
+class RadioEngine{
+ constructor(context,stream,settings){
+  this.context=context;this.stream=stream;this.loops=[];
+  const ctx=context;this.source=ctx.createMediaStreamSource(stream);
+  this.mono=ctx.createGain();this.mono.channelCount=1;this.mono.channelCountMode='explicit';
+  this.high=ctx.createBiquadFilter();this.high.type='highpass';this.high.Q.value=.707;
+  this.high2=ctx.createBiquadFilter();this.high2.type='highpass';this.high2.Q.value=.707;
+  this.grit=ctx.createWaveShaper();this.grit.oversample='2x';
+  this.low=ctx.createBiquadFilter();this.low.type='lowpass';this.low.Q.value=.707;
+  this.mix=ctx.createGain();this.compressor=ctx.createDynamicsCompressor();this.compressor.threshold.value=-12;this.compressor.knee.value=12;this.compressor.ratio.value=6;this.compressor.attack.value=.003;this.compressor.release.value=.2;
+  this.volume=ctx.createGain();this.volume.gain.value=0;this.analyser=ctx.createAnalyser();this.analyser.fftSize=1024;
+  this.source.connect(this.mono).connect(this.high).connect(this.high2).connect(this.grit).connect(this.low).connect(this.mix);
+  this.mix.connect(this.compressor).connect(this.volume).connect(this.analyser).connect(ctx.destination);
+  this.noiseGains={};
+  for(const kind of ['static','crackle','wind']){
+   const buffer=ctx.createBuffer(1,ctx.sampleRate*19,ctx.sampleRate),data=buffer.getChannelData(0);let brown=0,pop=0;
+   for(let i=0;i<data.length;i++){const n=Math.random()*2-1;if(kind==='static')data[i]=n;else if(kind==='wind'){brown=(brown+.025*n)/1.025;data[i]=brown*5*(.65+.35*Math.sin(i/ctx.sampleRate*.47));}else{if(Math.random()<18/ctx.sampleRate)pop=(Math.random()*2-1)*.8;data[i]=pop;pop*=-.72;}}
+   const loop=ctx.createBufferSource();loop.buffer=buffer;loop.loop=true;
+   const filter=ctx.createBiquadFilter();filter.type=kind==='wind'?'lowpass':'bandpass';filter.frequency.value=kind==='wind'?700:2300;filter.Q.value=kind==='wind'?.5:.6;
+   const gain=ctx.createGain();gain.gain.value=0;loop.connect(filter).connect(gain).connect(this.mix);loop.start();this.loops.push(loop);this.noiseGains[kind]=gain;
+  }
+  this.update(settings);this.volume.gain.setValueAtTime(0,ctx.currentTime);this.setVolume(settings.volume,false);
+ }
+ update(s){const t=this.context.currentTime;this.high.frequency.setTargetAtTime(s.thin,t,.025);this.high2.frequency.setTargetAtTime(s.thin,t,.025);this.low.frequency.setTargetAtTime(s.tone,t,.025);this.grit.curve=distortionCurve(s.drive);for(const k of ['crackle','static','wind'])this.noiseGains[k].gain.setTargetAtTime((s[k]/100)**2*(k==='crackle'?1.8:k==='wind'?.45:.3),t,.05);}
+ setVolume(value,muted){this.volume.gain.setTargetAtTime(muted?0:value/100,this.context.currentTime,.035);}
+ async close(){for(const loop of this.loops)loop.stop();for(const track of this.stream.getTracks())track.stop();this.source.disconnect();await this.context.close();}
+}
+
+const $=id=>document.getElementById(id),keys=['thin','tone','drive','crackle','static','wind','volume'];
+let engine=null,busy=false,muted=false,frame=0;
+const settings=()=>Object.fromEntries(keys.map(k=>[k,Number($(k).value)]));
+function message(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error);}
+function readouts(){for(const k of keys){$(k+'Value').textContent=k==='thin'||k==='tone'?Number($(k).value).toLocaleString()+' Hz':$(k).value+'%';}}
+function state(on){$('connect').disabled=on||busy;$('connect').textContent=busy?'Connecting…':on?'Receiving transmission':'Tune in to a tab';$('stop').disabled=!on;$('mute').disabled=!on;$('signal').textContent=on?'ON AIR':'OFF AIR';}
+async function stop(){const old=engine;engine=null;cancelAnimationFrame(frame);if(old)await old.close();muted=false;$('mute').textContent='Mute';$('mute').setAttribute('aria-pressed','false');$('sourceName').textContent='Waiting for a transmission';state(false);drawIdle();message('Radio off. Normal audio is restored in the original tab.');}
+const canvas=$('scope'),pen=canvas.getContext('2d');
+function sizeCanvas(){canvas.width=Math.floor(canvas.clientWidth*devicePixelRatio);canvas.height=Math.floor(canvas.clientHeight*devicePixelRatio);}
+function drawIdle(){sizeCanvas();pen.strokeStyle='#526548';pen.lineWidth=devicePixelRatio;pen.beginPath();pen.moveTo(0,canvas.height/2);pen.lineTo(canvas.width,canvas.height/2);pen.stroke();}
+function draw(){if(!engine)return;const data=new Uint8Array(engine.analyser.fftSize);engine.analyser.getByteTimeDomainData(data);pen.clearRect(0,0,canvas.width,canvas.height);pen.strokeStyle='#c3dc9f';pen.lineWidth=1.5*devicePixelRatio;pen.beginPath();for(let i=0;i<data.length;i++){const x=i/(data.length-1)*canvas.width,y=data[i]/255*canvas.height;i?pen.lineTo(x,y):pen.moveTo(x,y);}pen.stroke();frame=requestAnimationFrame(draw);}
+$('connect').addEventListener('click',async()=>{
+ if(busy||engine)return;
+ if(!navigator.mediaDevices?.getDisplayMedia){message('Tab audio is unavailable here. Open this page in desktop Chrome or Edge.',true);return;}
+ busy=true;state(false);let stream,ctx;
+ try{
+  ctx=new AudioContext();const resumed=ctx.resume();
+  stream=await navigator.mediaDevices.getDisplayMedia({video:{displaySurface:'browser',frameRate:1},audio:{suppressLocalAudioPlayback:true,echoCancellation:false,noiseSuppression:false,autoGainControl:false},selfBrowserSurface:'exclude',systemAudio:'exclude',surfaceSwitching:'exclude',monitorTypeSurfaces:'exclude'});
+  await resumed;
+  if(!stream.getAudioTracks().length)throw new Error('No tab audio was shared. Try again: choose Chrome Tab and enable Share tab audio.');
+  const surface=stream.getVideoTracks()[0]?.getSettings().displaySurface;
+  if(surface&&surface!=='browser')throw new Error('Choose the YouTube browser tab, not a window or entire screen.');
+  engine=new RadioEngine(ctx,stream,settings());
+  for(const track of stream.getTracks())track.addEventListener('ended',()=>{if(engine?.stream===stream)stop();},{once:true});
+  $('sourceName').textContent=stream.getAudioTracks()[0].label||'YouTube transmission';
+  message('Tuned in. Leave your video playing and shape the sound below.');sizeCanvas();if(!matchMedia('(prefers-reduced-motion: reduce)').matches)draw();
+ }catch(error){if(stream)stream.getTracks().forEach(t=>t.stop());if(ctx&&ctx.state!=='closed')await ctx.close();engine=null;message(error.name==='NotAllowedError'?'Connection cancelled or blocked. Click Tune in and share a Chrome tab with audio.':error.message||'Could not connect. Try desktop Chrome with tab audio enabled.',true);}
+ finally{busy=false;state(Boolean(engine));}
+});
+$('stop').addEventListener('click',stop);
+$('mute').addEventListener('click',()=>{muted=!muted;engine?.setVolume(settings().volume,muted);$('mute').textContent=muted?'Unmute':'Mute';$('mute').setAttribute('aria-pressed',String(muted));});
+for(const k of keys)$(k).addEventListener('input',()=>{readouts();if(k==='volume')engine?.setVolume(settings().volume,muted);else{engine?.update(settings());document.querySelectorAll('[data-preset]').forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false');});$('presetName').textContent='CUSTOM FREQUENCY';}});
+document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{for(const[k,v]of Object.entries(presets[b.dataset.preset]))$(k).value=v;document.querySelectorAll('[data-preset]').forEach(p=>{p.classList.toggle('selected',p===b);p.setAttribute('aria-pressed',String(p===b));});$('presetName').textContent=b.textContent.toUpperCase();readouts();engine?.update(settings());}));
+$('youtubeForm').addEventListener('submit',event=>{event.preventDefault();try{const url=youtubeURL($('youtube').value);window.open(url,'_blank','noopener,noreferrer');message('Play your video in the new tab, then return here and click Tune in to a tab.');}catch(e){message(e.message,true);$('youtube').focus();}});
+window.addEventListener('resize',()=>{if(engine)sizeCanvas();else drawIdle();});window.addEventListener('pagehide',()=>{if(engine)engine.stream.getTracks().forEach(t=>t.stop());});
+readouts();drawIdle();
+if(!navigator.mediaDevices?.getDisplayMedia)message('For live YouTube effects, open this page in desktop Chrome or Edge.',true);
+
+})();</script></body></html>
